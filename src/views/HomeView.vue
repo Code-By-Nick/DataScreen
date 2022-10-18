@@ -19,10 +19,10 @@
                 </div>
                 <div class="two">
                     <div class="two_grid">
-                        <div class="two_one">qweqwe</div>
-                        <div class="two_two">qweqweqe</div>
+                        <div class="two_one"><SexClass></SexClass></div>
+                        <div class="two_two">党员年龄分布</div>
                         <div class="two_three"><PeopleCount></PeopleCount></div>
-                        <div class="two_four">qweqweqweq</div>
+                        <div class="two_four"><PartyClass></PartyClass></div>
                     </div>
                 </div>
                 <div class="three">
@@ -54,6 +54,9 @@ import SocialSecurity from '@/components/SocialSecurity'
 import EpidemicPrevent from '@/components/EpidemicPrevent'
 import PeopleCount from '@/components/PeopleCount'
 
+import PartyClass from '@/components/PartyClass'
+import SexClass from '@/components/SexClass'
+
 
 export default {
   name: 'HomeView',
@@ -63,7 +66,9 @@ export default {
       BirthDeath,
       SocialSecurity,
       EpidemicPrevent,
-      PeopleCount
+      PeopleCount,
+      SexClass,
+      PartyClass
   }
 }
 </script>
@@ -71,6 +76,7 @@ export default {
 <style scoped lang="scss">
 .BoxContent{
     height: 100%;
+    background-image: url("../../public/bg.png");
 
     .el-header{
         //display: flex;
@@ -90,7 +96,7 @@ export default {
         display: grid;
         grid-template-columns: repeat(12, 1fr);
         grid-template-rows: repeat(5, 1fr);
-        grid-gap: 5px;
+        grid-gap: 10px;
 
         .one{
             //background-color: #42b983;

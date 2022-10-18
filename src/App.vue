@@ -12,7 +12,7 @@
 
 html,body{
     height: 100%;
-    background-color: rgba(2, 10, 46, 1);
+
 }
 
 #app {
@@ -21,6 +21,7 @@ html,body{
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+    //background-color: rgb(34, 34, 66);
     height: 100%;
 }
 
