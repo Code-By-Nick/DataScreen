@@ -39,6 +39,8 @@
                 </div>
             </div>
         </el-main>
+
+        <canvas id="canvas" style="position: absolute;top: 0;left: 0;"></canvas>
     </el-container>
 </template>
 

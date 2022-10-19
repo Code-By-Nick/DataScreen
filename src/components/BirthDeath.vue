@@ -18,8 +18,10 @@ export default {
     },
     methods:{
         drawLine(id) {
-            this.charts = echarts.init(document.getElementById(id));
+            this.charts = echarts.init(document.getElementById(id),'dark');
             this.charts.setOption({
+                backgroundColor:'rgba(128, 128, 128, 0.1)',
+                lazyUpdate: true,
                 // title: {
                 //     text: 'Stacked Line'
                 // },
@@ -80,6 +82,7 @@ export default {
 
             });
         },
+
     }
 }
 </script>

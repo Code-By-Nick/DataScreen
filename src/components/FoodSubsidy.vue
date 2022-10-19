@@ -18,13 +18,15 @@ export default {
     },
     methods:{
         drawLine(id) {
-            this.charts = echarts.init(document.getElementById(id));
+            this.charts = echarts.init(document.getElementById(id),'dark');
             this.charts.setOption({
                 title: {
                     text: '粮食补发',
                     left: 'center',
                     top: 'center'
                 },
+                backgroundColor:'rgba(128, 128, 128, 0.1)',
+                lazyUpdate: true,
                 tooltip:{
                     trigger:'item'
                 },
@@ -58,14 +60,40 @@ export default {
                         ],
                         radius: ['45%', '60%'],
                         color: [
-                            '#a283f1',
+                            '#b9b7ff',
                             '#e7e064',
                         ]
                     }
                 ]
 
             });
+            this.AutoPlay();
         },
+        AutoPlay(){
+            let count = 0;
+            setInterval(() => {
+                this.charts.dispatchAction({
+                    type: 'downplay',
+                    seriesIndex: 0,
+                    dataIndex: count
+                });
+                count++;
+                if (count === 5) {
+                    count = 0;
+                }
+                this.charts.dispatchAction({
+                    type: 'highlight',
+                    seriesIndex: 0,
+                    dataIndex: count
+                });
+                this.charts.dispatchAction({
+                    type: 'showTip',
+                    seriesIndex: 0,
+                    dataIndex: count
+                });
+            }, 2000);
+
+        }
     }
 }
 </script>

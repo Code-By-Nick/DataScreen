@@ -18,14 +18,14 @@ name: "PartyClass",
     },
     methods:{
         drawLine(id) {
-            this.charts = echarts.init(document.getElementById(id));
+            this.charts = echarts.init(document.getElementById(id),'dark');
             this.charts.setOption({
                 title: {
                     text: '党员',
                     left: 'center',
                     top: 'center'
                 },
-
+                backgroundColor:'rgba(128, 128, 128, 0.1)',
                 tooltip: {
                     trigger: "item",
                     // formatter: "{a} <br/>{b}: {c} ({d}%)",

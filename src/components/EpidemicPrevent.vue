@@ -18,8 +18,10 @@ export default {
     },
     methods:{
         drawLine(id) {
-            this.charts = echarts.init(document.getElementById(id));
+            this.charts = echarts.init(document.getElementById(id),'dark');
             this.charts.setOption({
+                backgroundColor:'rgba(128, 128, 128, 0.1)',
+                lazyUpdate: true,
                 // title: {
                 //     text: 'Stacked Area Chart'
                 // },
@@ -33,7 +35,12 @@ export default {
                     }
                 },
                 legend: {
-                    data: ['近一周', '近一月', '近一年', 'Direct', 'Search Engine']
+                    data: ['近一周', '近一月', '近一年', 'Direct', 'Search Engine'],
+                    selected:{
+                        '近一周':false,
+                        '近一月':true,
+                        '近一年':false
+                    },
                 },
                 // toolbox: {
                 //     feature: {
@@ -99,7 +106,33 @@ export default {
                 ]
 
             });
+            this.AutoPlay();
         },
+        AutoPlay(){
+            let count = 0;
+            setInterval(() => {
+                this.charts.dispatchAction({
+                    type: 'downplay',
+                    seriesIndex: 0,
+                    dataIndex: count
+                });
+                count++;
+                if (count === 6) {
+                    count = 0;
+                }
+                this.charts.dispatchAction({
+                    type: 'highlight',
+                    seriesIndex: 0,
+                    dataIndex: count
+                });
+                this.charts.dispatchAction({
+                    type: 'showTip',
+                    seriesIndex: 0,
+                    dataIndex: count
+                });
+            }, 2000);
+
+        }
     }
 }
 </script>

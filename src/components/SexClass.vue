@@ -18,17 +18,18 @@ name: "SexClass",
     },
     methods:{
         drawLine(id) {
-            this.charts = echarts.init(document.getElementById(id));
+            this.charts = echarts.init(document.getElementById(id),'dark');
             this.charts.setOption({
                 title: {
                     text: '性别',
+                    // color:'#eee',
                     left: 'center',
                     top: 'center'
                 },
+                backgroundColor:'rgba(128, 128, 128, 0.1)',
                 tooltip:{
                     trigger:'item'
-                }
-                ,
+                },
                 series: [
                     {
                         type: 'pie',
