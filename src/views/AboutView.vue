@@ -38,8 +38,8 @@
                   <div class="chart" dg-chart-widget="">
                       <div class="two_grid">
                           <div class="two_one"><SexClass></SexClass></div>
-                          <div class="two_two">党员年龄分布</div>
-                          <div class="two_three"><FoodSubsidy></FoodSubsidy></div>
+                          <div class="two_two"><AreaMap></AreaMap></div>
+                          <div class="two_three"></div>
                           <div class="two_four"><PartyClass></PartyClass></div>
                       </div>
                   </div>
@@ -78,7 +78,7 @@
 // import echarts from "echarts";
 //
 import ResidentRegist from '@/components/ResidentRegist'
-import FoodSubsidy from '@/components/FoodSubsidy'
+// import FoodSubsidy from '@/components/FoodSubsidy'
 import BirthDeath from '@/components/BirthDeath'
 import SocialSecurity from '@/components/SocialSecurity'
 import EpidemicPrevent from '@/components/EpidemicPrevent'
@@ -87,20 +87,22 @@ import PeopleCount from '@/components/PeopleCount'
 import PartyClass from '@/components/PartyClass'
 import SexClass from '@/components/SexClass'
 import AgeDistribution from "@/components/AgeDistribution";
+import AreaMap from "@/components/AreaMap";
 
 
 export default {
     name: 'HomeView',
     components: {
         ResidentRegist,
-        FoodSubsidy,
+        // FoodSubsidy,
         BirthDeath,
         SocialSecurity,
         EpidemicPrevent,
         PeopleCount,
         SexClass,
         PartyClass,
-        AgeDistribution
+        AgeDistribution,
+        AreaMap
     }
 }
 </script>
@@ -112,16 +114,26 @@ export default {
     width: 100%;
     height: 100%;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(8, 1fr);
     grid-template-rows: repeat(2, 1fr);
 
-    .two_four{
-        grid-column: 1 / 2;
-        grid-row: 2 / 3;
+    .two_one{
+        grid-column: 1 / 3;
     }
 
-    .two_two,.two_three{
+    .two_two{
+        grid-column: 3 / 9;
         grid-row: 1 / 3;
+    }
+
+    .two_three{
+        grid-column: 7 / 9;
+        grid-row: 1 / 3;
+    }
+
+    .two_four{
+        grid-column: 1 / 3;
+        grid-row: 2 / 3;
     }
 }
 

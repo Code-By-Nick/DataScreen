@@ -34,7 +34,7 @@ export default {
             this.charts = echarts.init(document.getElementById(id),'dark');
             this.charts.setOption({
                 // backgroundColor: '#0e202d',
-                title: {
+/*                title: {
                     // text: "第三采油厂",
                     "subtext": "总数: 599",
                     "textStyle": {
@@ -47,12 +47,12 @@ export default {
                     },
                     "x": "center",
                     "top": "0%"
-                },
+                },*/
                 backgroundColor:'rgba(128, 128, 128, 0.1)',
-                grid: {
-                    top: 200,
-                    bottom: 150
-                },
+                // grid: {
+                //     top: 200,
+                //     bottom: 150
+                // },
                 "tooltip": {},
                 xAxis: {
                     "data": ["常住人口", "流动人口", "乡村人口"],
@@ -66,9 +66,9 @@ export default {
                         interval:0,
                         textStyle: {
                             color:  '#beceff',
-                            fontSize:20,
+                            fontSize:15,
                         },
-                        margin: 80, //刻度标签与轴线之间的距离。
+                        margin: 40, //刻度标签与轴线之间的距离。
                     }
                 },
                 yAxis: {
@@ -87,18 +87,18 @@ export default {
                 },
                 series: [
                     {
-                        "name": "",
-                        "type": "pictorialBar",
-                        "symbolSize": [50, 25],
-                        "symbolOffset": [0, -10],
+                        name: "",
+                        type: "pictorialBar",
+                        symbolSize: [50, 25],
+                        symbolOffset: [0, -10],
                         "z": 12,
-                        "data": [
+                        data: [
                             {
-                            "name": "常住人口",
-                            "value": "981",
-                            "trueVal": "98",
-                            "symbolPosition": "end",
-                            "itemStyle": {
+                            name: "常住人口",
+                            value: "981",
+                            trueVal: "98",
+                            symbolPosition: "end",
+                            itemStyle: {
                                 "normal": {
                                     "color": "#00fff5"  //圆柱顶部颜色
                                 }
@@ -409,6 +409,7 @@ export default {
 
         > div{
             height: 25%;
+            //background: transparent;
         }
     }
 }

@@ -81,7 +81,33 @@ export default {
                 ]
 
             });
+            this.AutoPlay();
         },
+        AutoPlay(){
+            let count = 0;
+            setInterval(() => {
+                this.charts.dispatchAction({
+                    type: 'downplay',
+                    seriesIndex: 0,
+                    dataIndex: count
+                });
+                count++;
+                if (count === 6) {
+                    count = 0;
+                }
+                this.charts.dispatchAction({
+                    type: 'highlight',
+                    seriesIndex: 0,
+                    dataIndex: count
+                });
+                this.charts.dispatchAction({
+                    type: 'showTip',
+                    seriesIndex: 0,
+                    dataIndex: count
+                });
+            }, 2000);
+
+        }
 
     }
 }

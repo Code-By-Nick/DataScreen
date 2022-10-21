@@ -37,8 +37,8 @@ export default {
                 legend: {
                     data: ['近一周', '近一月', '近一年', 'Direct', 'Search Engine'],
                     selected:{
-                        '近一周':false,
-                        '近一月':true,
+                        '近一周':true,
+                        '近一月':false,
                         '近一年':false
                     },
                 },
@@ -57,7 +57,7 @@ export default {
                     {
                         type: 'category',
                         boundaryGap: false,
-                        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+                        data: [1,2,3,4,5,6,7,8,9,4,5,6,7,8,9]
                     }
                 ],
                 yAxis: [
@@ -68,14 +68,28 @@ export default {
                 series: [
                     {
                         name: '近一周',
-                        type: 'line',
+                        type: 'bar',
                         smooth: true,
                         stack: 'Total',
                         areaStyle: {},
                         emphasis: {
                             focus: 'series'
                         },
-                        data: [150, 232, 201, 154, 190, 330, 410]
+                        barWidth: 15,
+                        itemStyle: {
+                            normal: {
+                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                    offset: 0,
+                                    color: "#00FFE3"
+                                },
+                                    {
+                                        offset: 1,
+                                        color: "#4693EC"
+                                    }
+                                ])
+                            }
+                        },
+                        data: [150, 232, 201, 154, 190, 330, 410,201, 154, 190, 330,410,201, 154]
                     },
                     {
                         name: '近一月',
