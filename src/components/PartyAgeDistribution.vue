@@ -12,13 +12,13 @@ name: "AgeDistribution",
             charts: "",
             opinionData: ["3", "2", "4", "4", "5"],
             color : [
-                '#0CD2E6',
-                '#3751E6',
-                '#FFC722',
-                '#886EFF',
-                '#008DEC',
+                '#FF6E76',
+                '#254DBB',
+                '#FBF73A',
+                '#FA8E3D',
+                '#4AF7FA',
                 '#7fe03b',
-                '#00BFA5'
+                // '#FF6E76'
             ],
             AgeData: [
                 {
@@ -31,7 +31,7 @@ name: "AgeDistribution",
                 },
                 {
                     "name": "45-55岁",
-                    "value": 200
+                    "value": 20
                 },
                 {
                     "name": "55-60岁",
@@ -42,20 +42,31 @@ name: "AgeDistribution",
                     "value": 35
                 },
                 {
-                    "name": "71-80岁",
-                    "value": 5
-                },
-                {
-                    "name": "80岁以上",
-                    "value": 5
-                },
+                    "name": "71岁以上",
+                    "value": 25
+                }
+                // {
+                //     "name": "80岁以上",
+                //     "value": 20
+                // },
             ]
         }
+    },
+    created() {
+        // this.GetData();
     },
     mounted() {
         this.drawLine("AgeDistribution");
     },
     methods:{
+        GetData(){
+          this.axios.get('/count/findByAge').then(res => {
+              this.AgeData = res.data.data;
+              // console.log(res)
+
+          })
+        },
+
         drawLine(id) {
             this.charts = echarts.init(document.getElementById(id),'dark');
             this.charts.setOption({
@@ -98,7 +109,7 @@ name: "AgeDistribution",
                         hoverAnimation: false,
                         data: this.setChartOption(this.AgeData),
                         itemStyle: {
-                            borderRadius: 3,
+                            // borderRadius: 3,
                             borderColor: '#fff',
                             borderWidth: 5
                         },
@@ -110,9 +121,9 @@ name: "AgeDistribution",
         },
         // 设置数据
         setChartOption(data) {
-            let that = this;
+            // let that = this;
             const formatData = [];
-            data.forEach(function (item, index) {
+            data.forEach(function (item) {
                 formatData.push(
                     {
                         value: item.value,
@@ -120,10 +131,10 @@ name: "AgeDistribution",
                         itemStyle: {
                             normal: {
                                 borderWidth: 10,
-                                shadowBlur: 20,
+                                shadowBlur: 5,
                                 borderColor: 'transparent',
                                 // borderColor: that.color[index],
-                                shadowColor: that.color[index],
+                                // shadowColor: that.color[index],
                             },
                         },
                     },

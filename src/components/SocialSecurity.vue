@@ -12,7 +12,7 @@ name: "SocialSecurity",
             charts: "",
             opinionData: ["3", "2", "4", "4", "5"],
             seriesData:[1200, 200, 150, 80],
-            color:['#3070cf', '#2fd28d', '#c4742d', '#c42d2d'],
+            color:['#3070cf', '#92ee4e', '#FBF73A', '#c42d2d'],
             colors: [
                 {
                     type: 'linear',
@@ -187,59 +187,115 @@ name: "SocialSecurity",
             xList:['缴纳社保', '缴纳医保', '领取低保', '取消低保'],
 
             xData: '',
+            MyBarWidth:18
         }
     },
     mounted() {
         this.drawLine("SocialSecurity");
+        this. GetData();
     },
     methods:{
+        GetData(){
+            this.axios.get('http://10.1.3.5:8080/count/JMSB').then(res => {
+                console.log(res)
+            })
+        },
+
+
         drawLine(id) {
-            let that = this;
+            // let that = this;
             this.charts = echarts.init(document.getElementById(id),'dark');
             this.charts.setOption({
                 backgroundColor:'rgba(128, 128, 128, 0.1)',
-                lazyUpdate: true,
-                type: "bar",
-                label: {
-                    // 柱图头部显示值
-                    show: true,
-                    position: "top",
-                    color: "#fff",
-                    fontSize: "12px",
-                    formatter: (params) => {
-                        return params.value[params.encode.x[0]];
-                    },
+
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'cross',
+                        crossStyle: {
+                            color: '#999'
+                        }
+                    }
                 },
-                tooltip:{
-                    trigger:'item'
-                },
-                xAxis: {
-                    type: 'category',
+
+                legend: {
                     data: ['缴纳社保', '缴纳医保', '领取低保', '取消低保']
                 },
-                yAxis: {
-                    name:'数量(人)',
-                    type: 'value'
-                },
+                xAxis: [
+                    {
+                        name: '年份',
+                        type: 'category',
+                        data: ['2019', '2020', '2021'],
+                        axisPointer: {
+                            type: 'shadow'
+                        }
+                    }
+                ],
+                yAxis: [
+                    {
+                        type: 'value',
+                        name: '人数',
+
+                    }
+                ],
                 series: [
                     {
-                        data: this.seriesData,
+                        name: '缴纳社保',
                         type: 'bar',
-                        itemStyle: {
-                            normal: {
-                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                                    offset: 0,
-                                    color: "#f279f5"
-                                },
-                                    {
-                                        offset: 1,
-                                        color: "#00FFF5"
-                                    }
-                                ])
+                        barGap: 0,
+                        barWidth: this.MyBarWidth,
+                        color:'#254DBB',
+                        tooltip: {
+                            valueFormatter: function (value) {
+                                return value + ' 人';
                             }
                         },
+                        data: [
+                            160,360,250
+                        ]
+                    },
+                    {
+                        name: '缴纳医保',
+                        type: 'bar',
+                        barWidth: this.MyBarWidth,
+                        color:'#7fe03b',
+                        tooltip: {
+                            valueFormatter: function (value) {
+                                return value + ' 人';
+                            }
+                        },
+                        data: [
+                           188,222,138
+                        ]
+                    },
+                    {
+                        name: '领取低保',
+                        type: 'bar',
+                        barWidth: this.MyBarWidth,
+                        color:'#FBF73A',
+                        tooltip: {
+                            valueFormatter: function (value) {
+                                return value + ' 人';
+                            }
+                        },
+                        data: [
+                            160,411,336
+                        ]
+                    },
+                    {
+                        name: '取消低保',
+                        type: 'bar',
+                        barWidth: this.MyBarWidth,
+                        color:'#FA8E3D',
+                        tooltip: {
+                            valueFormatter: function (value) {
+                                return value + ' 人';
+                            }
+                        },
+                        data: [
+                            190,256,130
+                        ]
                     }
-
 
                 ]
 
@@ -248,14 +304,14 @@ name: "SocialSecurity",
             this.AutoPlay();
 
 
-            this.xData = this.xList.map((item, index) => {
-                return {
-                    value: item,
-                    textStyle: {
-                        color: that.color[index],
-                    },
-                };
-            });
+            // this.xData = this.xList.map((item, index) => {
+            //     return {
+            //         value: item,
+            //         textStyle: {
+            //             color: that.color[index],
+            //         },
+            //     };
+            // });
         },
 
         AutoPlay(){

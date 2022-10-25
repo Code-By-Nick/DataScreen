@@ -34,13 +34,14 @@
           </div>
           <div class="layout layout-center-top">
               <div class="panel border-all">
-                  <div class="title"><label>人口属性统计</label></div>
+                  <div class="title"><label>衡阳行政地图</label></div>
                   <div class="chart" dg-chart-widget="">
                       <div class="two_grid">
-                          <div class="two_one"><SexClass></SexClass></div>
+<!--                          <div class="two_one"><MyTest></MyTest></div>-->
+<!--                          <div class="two_one"><SexClass></SexClass></div>-->
                           <div class="two_two"><AreaMap></AreaMap></div>
-                          <div class="two_three"></div>
-                          <div class="two_four"><PartyClass></PartyClass></div>
+<!--                          <div class="two_three"></div>-->
+<!--                          <div class="two_four"><PartyClass></PartyClass></div>-->
                       </div>
                   </div>
                   <div class="border-foot"></div>
@@ -83,11 +84,14 @@ import BirthDeath from '@/components/BirthDeath'
 import SocialSecurity from '@/components/SocialSecurity'
 import EpidemicPrevent from '@/components/EpidemicPrevent'
 import PeopleCount from '@/components/PeopleCount'
-
-import PartyClass from '@/components/PartyClass'
-import SexClass from '@/components/SexClass'
-import AgeDistribution from "@/components/AgeDistribution";
+//
+// import PartyClass from '@/components/PartyClass'
+// import SexClass from '@/components/SexClass'
+import AgeDistribution from "@/components/PartyAgeDistribution";
 import AreaMap from "@/components/AreaMap";
+// import MyTest from "@/components/MyTest";
+
+
 
 
 export default {
@@ -99,10 +103,11 @@ export default {
         SocialSecurity,
         EpidemicPrevent,
         PeopleCount,
-        SexClass,
-        PartyClass,
+        // SexClass,
+        // PartyClass,
         AgeDistribution,
-        AreaMap
+        AreaMap,
+        // MyTest
     }
 }
 </script>
@@ -114,27 +119,30 @@ export default {
     width: 100%;
     height: 100%;
     display: grid;
-    grid-template-columns: repeat(8, 1fr);
+    //grid-template-columns: repeat(8, 1fr);
     grid-template-rows: repeat(2, 1fr);
 
-    .two_one{
-        grid-column: 1 / 3;
-    }
+    //.two_one{
+    //    //grid-column: 1 / 3;
+    //    position: absolute;
+    //    top: 0;
+    //    left: 0;
+    //}
 
     .two_two{
-        grid-column: 3 / 9;
+        //grid-column: 3 / 9;
         grid-row: 1 / 3;
     }
 
-    .two_three{
-        grid-column: 7 / 9;
-        grid-row: 1 / 3;
-    }
+    //.two_three{
+    //    grid-column: 7 / 9;
+    //    grid-row: 1 / 3;
+    //}
 
-    .two_four{
-        grid-column: 1 / 3;
-        grid-row: 2 / 3;
-    }
+    //.two_four{
+    //    grid-column: 1 / 3;
+    //    grid-row: 2 / 3;
+    //}
 }
 
 .chart:empty{

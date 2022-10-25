@@ -1,5 +1,6 @@
 <template>
-    <div  ref="mapRef" style="width: 100%; height: 100%"></div>
+<!--    <div  ref="mapRef" style="width: 100%; height: 100%"></div>-->
+    <dv-decoration-12 style="width:150px;height:150px;" />
 </template>
 
 <script>
@@ -22,7 +23,7 @@ export default {
         }
     },
     mounted() {
-        this.drawLine();
+        // this.drawLine();
 
     },
     methods: {

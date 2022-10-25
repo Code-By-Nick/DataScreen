@@ -51,21 +51,40 @@ export default {
             option:''
         }
     },
+    created() {
+        this.GetData();
+    },
     mounted() {
         // this.drawLine("PeopleCount");
-        this.mastery(this.MyData);
+
     },
     methods:{
+        GetData(){
+            this.axios.get('/count/findByAge').then(res => {
+                this.MyData = res.data.data;
+                // console.log(res)
+                // this.drawLine("AgeDistribution");
+                this.mastery(this.MyData);
+            })
+        },
+
         mastery(datas) {
             // var echarts = require("echarts");
             var myChart = echarts.init(document.getElementById('PeopleCount'));
-            var color = ["#3356d2", "#6a43f3", "#f3a722", "#5de8ec",'#35A5CF'];
+            var color = [
+                "#254DBB",
+                "#254DBB",
+                "#f3a722",
+                "#FBF73A",
+                '#50FAFE',
+                '#FE9041'
+            ];
             var data = datas;
             data.forEach((item,index) => {
                 item.itemStyle = {
                     color: color[index],
                     // color:item.itemStyle.color,
-                    opacity: 0.6,
+                    opacity: 0.7,
                 };
             });
 
@@ -157,7 +176,7 @@ export default {
                 };
             }
 
-            function getPie3D(pieData, internalDiameterRatio) {
+            function getPie3D(pieData, internalDiameterRatio, height) {
                 let series = [];
                 let sumValue = 0;
                 let startValue = 0;
@@ -220,7 +239,10 @@ export default {
                         false,
                         false,
                         k,
-                        series[i].pieData.value
+                        // series[i].pieData.value
+                        height ? series[i].pieData.proportion *height: 1 //自己自定义传入高度，每个类型按比例生成高度
+                        // series[i].pieData.value   ==>这个是饼图默认自己生成高度
+                        // 1 设置为1所有的扇形高度都一样高
                     );
 
                     startValue = endValue;

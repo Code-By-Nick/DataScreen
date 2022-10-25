@@ -44,10 +44,10 @@ name: "SexClass",
                             }
 
                         ],
-                        radius: ['40%', '60%'],
+                        radius: ['45%', '60%'],
                         color: [
-                            '#5F5FFB',
-                            '#F2CF52'
+                            '#6664FB',
+                            '#FBF73A'
                         ]
                     }
                 ]

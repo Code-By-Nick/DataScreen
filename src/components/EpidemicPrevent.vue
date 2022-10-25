@@ -35,10 +35,10 @@ export default {
                     }
                 },
                 legend: {
-                    data: ['近一周', '近一月', '近一年', 'Direct', 'Search Engine'],
+                    data: ['近一周', '当前月', '近一年', 'Direct', 'Search Engine'],
                     selected:{
                         '近一周':true,
-                        '近一月':false,
+                        '当前月':false,
                         '近一年':false
                     },
                 },
@@ -57,12 +57,13 @@ export default {
                     {
                         type: 'category',
                         boundaryGap: false,
-                        data: [1,2,3,4,5,6,7,8,9,4,5,6,7,8,9]
+                        data: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30]
                     }
                 ],
                 yAxis: [
                     {
-                        type: 'value'
+                        type: 'value',
+                        name:'返乡人数'
                     }
                 ],
                 series: [
@@ -89,10 +90,10 @@ export default {
                                 ])
                             }
                         },
-                        data: [150, 232, 201, 154, 190, 330, 410,201, 154, 190, 330,410,201, 154]
+                        data: [150, 232, 201, 154, 190, 330, 410,201, 154, 190, 330,410,201, 154,50,201, 154, 190, 330, 154,50,201, 154, 190, 330,410,201, 154,50,201]
                     },
                     {
-                        name: '近一月',
+                        name: '当前月',
                         type: 'line',
                         smooth: true,
                         stack: 'Total',

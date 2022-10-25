@@ -8,6 +8,9 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
+// 将自动注册所有组件为全局组件
+import dataV from '@jiaminghi/data-view'
+
 import NProgress from 'nprogress'   // 导入 nprogress
 import 'nprogress/nprogress.css'   // 导入样式，否则看不到效果
 NProgress.configure({showSpinner: true})   // 显示右上角螺旋加载提示
@@ -19,7 +22,9 @@ NProgress.configure({showSpinner: true})   // 显示右上角螺旋加载提示
 // })
 
 // 默认配置  基准地址 所有请求的前缀
-axios.defaults.baseURL = 'http://10.1.3.6:8080'
+axios.defaults.baseURL = '/api'
+// axios.defaults.baseURL = 'http://localhost:8088'
+// http://10.1.3.5:8080/count/findUserChangeVO
 
 //请求拦截  添加请求拦截器
 axios.interceptors.request.use(config => {
@@ -40,6 +45,7 @@ Vue.config.productionTip = false
 
 Vue.use(VueAxios, axios);
 Vue.use(ElementUI, {locale});
+Vue.use(dataV)
 
 new Vue({
   router,

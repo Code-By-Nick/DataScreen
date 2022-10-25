@@ -44,10 +44,10 @@ name: "PartyClass",
                             }
 
                         ],
-                        radius: ['40%', '60%'],
+                        radius: ['45%', '60%'],
                         color: [
-                            '#a487e5',
-                            '#eedd78',
+                            '#FBF73A',
+                            '#6664FB',
                             '#dd6b66',
                             '#759aa0',
                             '#e69d87',
